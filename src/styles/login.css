@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Navbar stays at the top full-width */
+  .navbar {
+    background-color: #FFA500;
+    width: 100%;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  /* Main container is centered vertically */
+  .main-container {
+    margin-top: 120px; /* space below navbar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Title styling */
+  h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #FFA500;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Form styling */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 300px;
+  }
+  
+  input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+  }
+  
+  /* Buttons aligned in a row */
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #5e00a3;
+  }
+  
+  /* Footer links */
+  .recuperar-senha,
+  .criar-conta {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .recuperar-senha a,
+  .criar-conta a {
+    color: #FFA500;
+    text-decoration: none;
+  }
+  
+  .recuperar-senha a:hover,
+  .criar-conta a:hover {
+    text-decoration: underline;
+  }
+  
