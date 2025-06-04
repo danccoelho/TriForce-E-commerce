@@ -1,0 +1,41 @@
+.carrinho-container {
+  padding: 20px;
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.item h4 {
+  margin: 0;
+}
+
+.quantidade {
+  margin: 10px 0;
+}
+
+.resumo {
+  margin-top: 20px;
+  border-top: 2px solid #ccc;
+  padding-top: 15px;
+}
+
+button {
+  background-color: #008080;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006666;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}

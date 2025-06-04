@@ -11,7 +11,7 @@ const Home = () => {
         <input type="text" className="search" placeholder="O que você está procurando?" />
         <div className="icons">
           <Link to="/CarrinhoDeCompras">❤️</Link>
-          <Link to="/">🛍️</Link>
+          <Link to="/Carrinho">🛍️</Link>
           <Link to="/Login">👤</Link>
         </div>
       </header>
@@ -47,7 +47,7 @@ const Home = () => {
           Copyright © 2025 3Force - Todos os direitos reservados.
         </div>
       </footer>
-      
+
     </div>
 
   );

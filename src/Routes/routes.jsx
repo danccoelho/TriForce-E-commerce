@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
+import Carrinho from '../pages/Carrinho';
 // outros imports...
 
 const Router = () => (
@@ -10,7 +11,8 @@ const Router = () => (
     <Routes>
       <Route path="/" element= {<Home/>} />
       <Route path="/Login" element = {<Login/>}/>
-      <Route path="/Cadastro" element = {<Cadastro/>}/> 
+      <Route path="/Cadastro" element = {<Cadastro/>}/>
+      <Route path="/Carrinho" element = {<Carrinho/>}/>
     </Routes>
   </BrowserRouter>
 );
