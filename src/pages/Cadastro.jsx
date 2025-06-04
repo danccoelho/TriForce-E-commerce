@@ -44,7 +44,7 @@ const Cadastro = () => {
     const { confirmarEmail, confirmarSenha, termos, ...dadosParaEnviar } = formData;
 
     try {
-      const res = await axios.post('http://localhost:3001/api/cadastro', dadosParaEnviar);
+      const res = await axios.post('http://localhost:3001/api/Cadastro', dadosParaEnviar);
       alert(res.data.message);
     } catch (err) {
       console.error('Erro ao cadastrar:', err);

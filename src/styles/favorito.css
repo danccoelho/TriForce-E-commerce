@@ -1,0 +1,41 @@
+.favoritos-container {
+  padding: 20px;
+}
+
+.lista-favoritos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-favorito {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.item-favorito h4 {
+  margin: 0;
+}
+
+.acoes {
+  margin-top: 10px;
+}
+
+button {
+  background-color: #008080;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #006666;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}

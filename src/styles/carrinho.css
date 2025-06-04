@@ -1,41 +1,356 @@
-.carrinho-container {
-  padding: 20px;
+.App {
+  text-align: center; --cor-primaria: #ff6600
 }
 
-.item {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 10px;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+:root {
+  --cor-primaria: #ff6600;
+  --cor-secundaria: #333;
+  --cor-fundo: #f6f6f6;
+  --cor-clara: #ffffff;
+  --cor-rodape: #fff;
+  --cor-texto-rodape: #333;
+  --cor-linha: #ff6600;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cor-clara);
+  color: var(--cor-secundaria);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.top-nav {
+  background: var(--cor-clara);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+  border-bottom: 2px solid var(--cor-fundo);
+  
+}
+
+.logo {
+  font-weight: bold;
+  color: var(--cor-primaria);
+  font-size: 1.8em;
+}
+
+.logo span {
+  color: var(--cor-secundaria);
+}
+
+.search {
+  width: 50%;
+  padding: 0.6em 1em;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 0.5em;
+}
+
+.icons {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;     
+  gap: 1em;    
+              
+}
+
+.icons a {
+  margin: 0 0.1em;
+  font-size: 1.5em;
+  color: var(--cor-secundaria);
+  text-decoration: none; /* ← removes the underline */
+}
+
+.banner {
+  width: 100%;
+  height: 600px;
+  background: center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-text {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 2em;
+  text-align: center;
   border-radius: 8px;
 }
 
-.item h4 {
+.banner-text h2 {
+  font-size: 2.5em;
   margin: 0;
 }
 
-.quantidade {
-  margin: 10px 0;
+.banner-text p {
+  font-size: 1.2em;
+  margin: 0.5em 0;
 }
 
-.resumo {
-  margin-top: 20px;
-  border-top: 2px solid #ccc;
-  padding-top: 15px;
-}
-
-button {
-  background-color: #008080;
-  color: white;
+.banner-text button {
+  margin-top: 1em;
+  background: var(--cor-primaria);
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 0.6em 1.4em;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background-color: #006666;
+.banner-text button:hover {
+  background: #e65c00;
 }
 
-.navbar {
+.benefits {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1em 0;
+  background: var(--cor-fundo);
+  font-size: 0.95em;
+  text-align: center;
+}
+
+.benefits div {
+  padding: 0.5em;
+  color: var(--cor-secundaria);
+  font-weight: 500;
+}
+
+.categorias {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 2em 0;
+}
+
+.categoria {
+  flex: 1;
+  height: 120px;
+  background: var(--cor-primaria);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.categoria:hover {
+  background: #e65c00;
+}
+
+.ofertas-relampago {
+  padding: 2em 0;
+  text-align: center;
+  background-color: #fafafa;
+  border-top: 2px solid var(--cor-fundo);
+  border-bottom: 2px solid var(--cor-fundo);
+}
+
+.ofertas-relampago h2 {
+  color: var(--cor-primaria);
+  font-size: 2em;
+}
+
+.produtos {
+  display: flex;
+  justify-content: flex-start; /* align items to the left */
+  gap: 0.5em; /* reduce spacing between cards */
+  margin-top: 2em;
+  margin-left: 1em; /* shift whole group slightly to the left */
+  flex-wrap: wrap;
+}
+
+.produto {
+  background: var(--cor-fundo);
+  padding: 1em;
+  flex: 1 1 calc(33.333% - 1em); /* allow 3 items per row with space */
+  min-width: 280px;
+  max-width: calc(33.333% - 1em);
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  transition: transform 0.2s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+.produto:hover {
+  transform: translateY(-5px);
+}
+
+.produto img {
+  max-width: 70%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.produto h3 {
+  color: var(--cor-secundaria);
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  word-break: break-word;
+  width: 100%;            /* Take full width of the card */
+  text-align: left;       /* Align text to the left */
+  margin-left: 0;         /* Optional: reset if previously changed */
+}
+
+
+.produto p {
+  margin: 0.2em 0;
+  font-size: 0.95em;
+  color: black;
+}
+
+.footer {
+  width: 1000px ;
+  background-color: #04204a;
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
   margin-bottom: 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-section a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .produtos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .produto {
+    max-width: 100%;
+  }
+
+  .categorias {
+    flex-direction: column;
+  }
+
+  .categoria {
+    margin-bottom: 1em;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

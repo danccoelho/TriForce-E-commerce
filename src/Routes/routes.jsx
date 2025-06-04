@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
 import Carrinho from '../pages/Carrinho';
+import Favorito from '../pages/Favorito';
 // outros imports...
 
 const Router = () => (
@@ -13,6 +14,7 @@ const Router = () => (
       <Route path="/Login" element = {<Login/>}/>
       <Route path="/Cadastro" element = {<Cadastro/>}/>
       <Route path="/Carrinho" element = {<Carrinho/>}/>
+      <Route path="/Favorito" element = {<Favorito/>}/>
     </Routes>
   </BrowserRouter>
 );
