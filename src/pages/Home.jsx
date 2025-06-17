@@ -11,8 +11,9 @@ const Home = () => {
             <div className="logo">3<span>Force</span></div>
             <input type="text" className="search" placeholder="O que você está procurando?" />
             <div className="icons">
-              <Link to="/CarrinhoDeCompras">❤️</Link>
-              <Link to="/">🛍️</Link>
+              <Link to="/CadastroProduto">🤖</Link>
+              <Link to="/Favorito">❤️</Link>
+              <Link to="/Carrinho">🛍️</Link>
               <Link to="/Login">👤</Link>
             </div>
           </header>

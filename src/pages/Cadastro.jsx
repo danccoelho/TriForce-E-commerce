@@ -1,135 +1,136 @@
+// src/components/Cadastro.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import '../styles/cadastro.css';
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/cadastro.css'; // Importa o CSS para o estilo
 
 const Cadastro = () => {
-  const [formData, setFormData] = useState({
-    nome: '',
-    sobrenome: '',
-    email: '',
-    confirmarEmail: '',
-    senha: '',
-    confirmarSenha: '',
-    termos: false,
+    const [formData, setFormData] = useState({
+    lotmer: '',
+    comum: '',
+    stam: '',
+    mome: '',
+    registration: '',
+    conlstiom: '',
+    soror: '',
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({ 
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validações básicas
-    if (formData.email !== formData.confirmarEmail) {
-      alert('Os e-mails não coincidem.');
-      return;
-    }
-
-    if (formData.senha !== formData.confirmarSenha) {
-      alert('As senhas não coincidem.');
-      return;
-    }
-
-    if (!formData.termos) {
-      alert('Você precisa aceitar os termos.');
-      return;
-    }
-
-    const { confirmarEmail, confirmarSenha, termos, ...dadosParaEnviar } = formData;
-
-    try {
-      const res = await axios.post('http://localhost:3001/api/Cadastro', dadosParaEnviar);
-      alert(res.data.message);
-    } catch (err) {
-      console.error('Erro ao cadastrar:', err);
-      alert('Erro ao cadastrar. Veja o console para mais detalhes.');
-    }
+    console.log('Formulário enviado:', formData);
+    alert('Cadastro em andamento! Verifique o console para os dados.');
+    // Aqui você integraria com sua API de backend
   };
 
   return (
-    <div className="page-container">
-      <nav className="navbar">
-        <Link to="/">TriForce</Link>
-      </nav>
+    <div className="registration-page">
+      <div className="registration-card">
+        {/* Header (Bousting logo e menu hambúrguer) */}
+        <header className="card-header">
+          <div className="bousting-logo">
+            <span className="icon-placeholder">👤</span> Bousting
+          </div>
+          <div className="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </header>
 
-      <h2 className="titulo">Crie sua conta</h2>
-
-      <form className="form-container" onSubmit={handleSubmit}>
-        <div className="form-grid">
-          <input
-            type="text"
-            name="nome"
-            placeholder="Nome*"
-            value={formData.nome}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="sobrenome"
-            placeholder="Sobrenome*"
-            value={formData.sobrenome}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="E-mail*"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="confirmarEmail"
-            placeholder="Confirme E-mail*"
-            value={formData.confirmarEmail}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="senha"
-            placeholder="Senha*"
-            value={formData.senha}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="confirmarSenha"
-            placeholder="Confirme Senha*"
-            value={formData.confirmarSenha}
-            onChange={handleChange}
-            required
-          />
+        {/* Título da Seção */}
+        <div className="section-title">
+          <h2>Cadastro</h2>
+          <div className="title-underline"></div>
         </div>
 
-        <label className="checkbox-wrapper">
-          <input
-            type="checkbox"
-            name="termos"
-            checked={formData.termos}
-            onChange={handleChange}
-          />
-          <span>Aceito os termos e condições</span>
-        </label>
+        {/* Formulário */}
+        <form className="registration-form" onSubmit={handleSubmit}>
+          <div className="form-grid">
+            {/* Coluna Esquerda */}
+            <div className="input-column">
+              <label className="input-label">Lotmer</label>
+              <div className="input-group">
+                <span className="input-icon">💼</span>
+                <input
+                  type="text"
+                  name="comum"
+                  placeholder="Comum"
+                  value={formData.comum}
+                  onChange={handleChange}
+                />
+              </div>
 
-        <div className="form-actions">
-          <button type="submit">Cadastrar</button>
-        </div>
+              <label className="input-label">Stam</label>
+              <div className="input-group">
+                <span className="input-icon">👤</span>
+                <input
+                  type="text"
+                  name="stam"
+                  placeholder="Stam"
+                  value={formData.stam}
+                  onChange={handleChange}
+                />
+                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
+              </div>
 
-        <div className="login-link">
-          <p>Já tem uma conta? <Link to="/Login">Faça login</Link></p>
-        </div>
-      </form>
+              <label className="input-label">Mome</label>
+              <div className="input-group">
+                <span className="input-icon">✉️</span>
+                <input
+                  type="text"
+                  name="mome"
+                  placeholder="Mome"
+                  value={formData.mome}
+                  onChange={handleChange}
+                />
+                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
+              </div>
+            </div>
+
+            {/* Coluna Direita */}
+            <div className="input-column">
+              <label className="input-label">Registration</label>
+              <div className="input-group">
+                <span className="input-icon">👤</span>
+                <input
+                  type="text"
+                  name="conlstiom"
+                  placeholder="Conlstiom"
+                  value={formData.conlstiom}
+                  onChange={handleChange}
+                />
+              </div>
+
+            
+              <label className="input-label">Soror</label>
+              <div className="input-group">
+                <span className="input-icon">💼</span>
+                <input
+                  type="text"
+                  name="soror"
+                  placeholder="Soror"
+                  value={formData.soror}
+                  onChange={handleChange}
+                />
+                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
+              </div>
+
+              {/* Botão de Registro */}
+              <button type="submit" className="registration-button">
+                Registration
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

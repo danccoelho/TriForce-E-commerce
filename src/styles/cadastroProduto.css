@@ -1,0 +1,310 @@
+/* src/styles/cadastroProduto.css */
+
+/* Variáveis CSS (Consistentes com o login, mas para este contexto) */
+:root {
+    --primary-color: #de750c; /* Laranja vibrante */
+    --secondary-color: #110f12; /* Cor escura para texto em fundo claro */
+    --text-dark-on-light: #0c0d0d; /* Texto escuro para fundos claros */
+    --text-light-on-dark: #fefefe; /* Texto claro para fundos escuros */
+
+    /* Gradiente da PÁGINA de Cadastro de Produto */
+    --page-gradient-start: #c84504c4; /* Mesmo gradiente do login */
+    --page-gradient-end: #db0606;
+
+    /* Fundo do CARD DO FORMULÁRIO (BRANCO) */
+    --card-background: #FFFFFF;
+    --card-border-color: rgba(0, 0, 0, 0.1);
+
+    /* Input colors on white card */
+    --input-bg-on-white: #fefefe;
+    --input-border-on-white: #ddd;
+    --input-text-on-white: #333;
+    --input-placeholder-on-white: #aaa;
+    --input-focus-border: var(--primary-color);
+    --input-focus-glow: rgba(255, 165, 0, 0.3);
+    
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --font-family-base: 'Inter', sans-serif; /* Consistente com login */
+}
+
+/* --- Estilos Globais para a página de produto --- */
+body {
+    margin: 0;
+    font-family: var(--font-family-base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Aplica o gradiente de fundo da página de login */
+    background: linear-gradient(135deg, var(--page-gradient-start) 0%, var(--page-gradient-end) 100%);
+    color: var(--text-dark-on-light); /* Cor de texto padrão para body */
+    overflow-x: hidden;
+    overflow-y: auto; /* Permite rolagem se o formulário for longo */
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Alinha nav e form verticalmente */
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* --- Wrapper da página de produto (transparente para ver o body background) --- */
+.product-registration-page {
+  display: flex;
+  flex-direction: column; /* Navbar em cima, formulário abaixo */
+  width: 100vw;
+  min-height: 100vh;
+  background: transparent; /* Permite que o background do body apareça */
+  align-items: center;
+  padding-bottom: 30px; /* Espaço na parte inferior */
+}
+
+/* --- Navbar (similar ao TriForce do login) --- */
+.product-navbar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Um pouco transparente */
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-start; /* Alinha o TriForce à esquerda */
+    align-items: center;
+}
+
+.product-navbar-brand {
+    color: var(--text-light-on-dark); /* TriForce branco */
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
+
+.product-navbar-brand:hover {
+    color: var(--primary-color); /* Laranja no hover */
+}
+
+
+/* --- Wrapper e Container do Formulário (o CARD BRANCO) --- */
+.product-form-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Maior que o login para acomodar mais campos */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    margin-top: 30px; /* Espaço abaixo da navbar */
+}
+
+.product-form-container {
+    background: var(--card-background); /* Fundo BRANCO */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 30px var(--shadow-color);
+    text-align: center; /* Centraliza o título */
+    border: 1px solid var(--card-border-color);
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeInScale 0.8s ease-out forwards;
+    position: relative;
+}
+
+/* Keyframes de animação (o mesmo do login) */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.product-form-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--text-dark-on-light); /* Título escuro */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-form-subtitle {
+    font-size: 1rem;
+    color: var(--secondary-color); /* Subtítulo escuro */
+    margin-bottom: 25px;
+}
+
+.product-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os grupos de input */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para inputs */
+    gap: 15px; /* Espaçamento entre inputs no grid */
+    margin-bottom: 15px; /* Espaço antes do botão */
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group.full-width {
+    grid-column: span 2; /* Faz a descrição ocupar as duas colunas */
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"], /* Adicionado type="number" */
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--input-bg-on-white);
+    border: 1px solid var(--input-border-on-white);
+    border-radius: 10px;
+    color: var(--input-text-on-white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura */
+    resize: vertical; /* Permite redimensionar verticalmente a textarea */
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: var(--input-placeholder-on-white);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 4px var(--input-focus-glow), inset 0 2px 5px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.sr-only { /* Para labels de acessibilidade */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* --- Botão de Submissão --- */
+.btn-submit-product {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, #ff8c00 100%); /* Gradiente laranja */
+    color: var(--text-light-on-dark);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    margin-top: 15px; /* Espaço acima do botão */
+}
+
+.btn-submit-product:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+}
+
+.btn-submit-product:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .product-navbar {
+        padding: 10px 20px;
+    }
+    .product-navbar-brand {
+        font-size: 1.8rem;
+    }
+    .product-form-wrapper {
+        padding: 15px;
+        margin-top: 20px;
+    }
+    .product-form-container {
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .product-form-title {
+        font-size: 2rem;
+    }
+    .product-form-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr; /* Colunas empilham em telas menores */
+        gap: 12px;
+    }
+    .input-group.full-width {
+        grid-column: span 1; /* Volta para 1 coluna em telas pequenas */
+    }
+    .input-group input,
+    .input-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    .btn-submit-product {
+        padding: 12px;
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-navbar-brand {
+        font-size: 1.6rem;
+    }
+    .product-form-wrapper {
+        padding: 10px;
+    }
+    .product-form-container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .product-form-title {
+        font-size: 1.8rem;
+    }
+    .product-form-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    .input-group input,
+    .input-group textarea {
+        padding: 9px 10px;
+        font-size: 0.9rem;
+    }
+    .btn-submit-product {
+        padding: 10px;
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+}

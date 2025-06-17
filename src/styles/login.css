@@ -1,111 +1,375 @@
+/* src/styles/login.css */
+
+/* Variáveis CSS para facilitar a manutenção e temas */
+:root {
+    --primary-color: #de750c; /* Laranja vibrante (usado em botões, foco) */
+    --secondary-color: #110f12; /* Cor escura para texto em fundo claro */
+    --text-dark-on-light: #0c0d0d; /* Texto escuro para fundos claros */
+    --text-light-on-dark: #fefefe; /* Texto claro para fundos escuros */
+
+    /* Gradiente da PÁGINA DE LOGIN (laranja/vermelho) */
+    --page-gradient-start: #c84504c4;
+    --page-gradient-end: #db0606;
+
+    /* Fundo do CARD DO FORMULÁRIO (BRANCO) */
+    --card-background: #FFFFFF; /* AGORA É BRANCO PURO! */
+    --card-border-color: rgba(0, 0, 0, 0.1); /* Borda sutil para card branco */
+
+    /* Input colors on white card */
+    --input-bg-on-white: #fefefe; /* Fundo do input quase branco */
+    --input-border-on-white: #ddd; /* Borda suave para input */
+    --input-text-on-white: #333; /* Texto do input escuro */
+    --input-placeholder-on-white: #aaa; /* Placeholder cinza */
+    --input-focus-border: var(--primary-color);
+    --input-focus-glow: rgba(255, 165, 0, 0.3); /* Brilho laranja ao focar */
+    
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Sombra mais suave para card branco */
+    --font-family-base: 'Inter', sans-serif; /* Mantido 'Inter' */
+}
+
+/* --- Estilos Globais --- */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  
-  /* Navbar stays at the top full-width */
-  .navbar {
-    background-color: #FFA500;
-    width: 100%;
-    padding: 1rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  
-  /* Main container is centered vertically */
-  .main-container {
-    margin-top: 120px; /* space below navbar */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Title styling */
-  h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #FFA500;
-    padding-bottom: 0.5rem;
-  }
-  
-  /* Form styling */
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 300px;
-  }
-  
-  input {
-    padding: 12px;
-    font-size: 1rem;
-    border: 2px solid #FFA500;
-    border-radius: 5px;
-  }
-  
-  /* Buttons aligned in a row */
-  .action-row {
+    font-family: var(--font-family-base);
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  button {
-    background-color: purple;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #5e00a3;
-  }
-  
-  /* Footer links */
-  .recuperar-senha,
-  .criar-conta {
-    margin-top: 1rem;
+    align-items: center;
+    min-height: 100vh;
+    /* Usa o gradiente LARANJA/VERMELHO para o BACKGROUND DA PÁGINA */
+    background: linear-gradient(135deg, var(--page-gradient-start) 0%, var(--page-gradient-end) 100%);
+    color: var(--text-dark-on-light); /* Cor de texto padrão para body, se não sobrescrito */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    overflow-y: auto; /* Permite rolagem vertical SE o conteúdo for maior que a tela */
+}
+
+/* Reset básico para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* --- Wrapper da página de login (para o gradiente de fundo) --- */
+/* Mantenho o nome 'registration-page' como no seu JSX, mas é o wrapper da 'login' */
+.registration-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Garante que ocupe a altura total da tela */
+  width: 100vw; /* Garante que ocupe a largura total da tela */
+  /* O background da página é definido no body. Esta div pode ser transparente. */
+  background: transparent; /* Torna o wrapper transparente para ver o background do body */
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+/* --- Container do Formulário de Login (o CARD BRANCO) --- */
+.login-container {
+    background: var(--card-background); /* AGORA É BRANCO! */
+    backdrop-filter: blur(10px); /* O blur ainda funciona no que está por trás do card */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 30px var(--shadow-color); /* Sombra para o card branco */
     text-align: center;
-  }
-  
-  .recuperar-senha a,
-  .criar-conta a {
-    color: #FFA500;
+    border: 1px solid var(--card-border-color); /* Borda sutil para o card branco */
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeInScale 0.8s ease-out forwards;
+    position: relative;
+    color: var(--text-dark-on-light); /* Texto padrão dentro do container será escuro */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.login-title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Sombra mais sutil para texto escuro */
+    color: var(--text-dark-on-light); /* Título será escuro */
+}
+
+.login-title a { /* Estilo para o link do TriForce dentro do título */
+    color: var(--text-dark-on-light);
     text-decoration: none;
-  }
-  
-  .recuperar-senha a:hover,
-  .criar-conta a:hover {
+    transition: color 0.3s ease;
+}
+
+.login-title a:hover {
+    color: var(--primary-color); /* Laranja no hover */
+}
+
+
+.login-subtitle {
+    font-size: 1rem;
+    color: var(--secondary-color); /* Subtítulo escuro */
+    margin-bottom: 20px;
+}
+
+.login-form .input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: calc(100% - 30px);
+    padding: 12px;
+    background: var(--input-bg-on-white); /* Fundo do input quase branco */
+    border: 1px solid var(--input-border-on-white); /* Borda suave */
+    border-radius: 10px;
+    color: var(--input-text-on-white); /* Texto do input escuro */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+}
+
+.login-form input::placeholder {
+    color: var(--input-placeholder-on-white); /* Placeholder cinza */
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--input-focus-border); /* Borda laranja ao focar */
+    box-shadow: 0 0 0 4px var(--input-focus-glow), inset 0 2px 5px rgba(0, 0, 0, 0.08);
+    background: #fff; /* Garantir branco puro ao focar */
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark-on-light); /* Texto "Lembrar-me" escuro */
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--input-border-on-white); /* Borda do checkbox */
+    border-radius: 4px;
+    background-color: var(--input-bg-on-white);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: var(--primary-color); /* Laranja quando checado */
+    border-color: var(--primary-color);
+}
+
+.remember-me input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-light-on-dark); /* Checkmark branco */
+    font-size: 12px;
+}
+
+.centered-link-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.forgot-password,
+.signup-link a {
+    color: var(--primary-color); /* Laranja para links */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.forgot-password:hover,
+.signup-link a:hover {
+    color: #f0932b; /* Laranja mais claro no hover */
     text-decoration: underline;
-  }
-  
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, #ff8c00 100%); /* Gradiente laranja no botão */
+    color: var(--text-light-on-dark); /* Texto branco no botão */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+}
+
+.btn-login:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.social-login {
+    margin-top: 25px;
+}
+
+.or-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #888; /* Separador cinza no fundo branco */
+    margin-bottom: 15px;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #eee; /* Linha separadora mais clara */
+}
+
+.or-separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.or-separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--input-border-on-white); /* Borda suave para botões sociais */
+    border-radius: 10px;
+    background: var(--input-bg-on-white); /* Fundo branco/claro para botões sociais */
+    color: var(--text-dark-on-light); /* Texto escuro para botões sociais */
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.btn-social img {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-social:hover {
+    background: #f0f0f0; /* Um pouco mais cinza no hover */
+    border-color: var(--primary-color); /* Laranja no hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-social:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Cores específicas para botões sociais com bordas personalizadas */
+.btn-social.google {
+    border-color: #DB4437;
+    color: var(--text-dark-on-light); /* Cor do texto padrão */
+}
+
+.btn-social.google:hover {
+    border-color: #c0392b;
+}
+
+.btn-social.facebook {
+    border-color: #4267B2;
+    color: var(--text-dark-on-light); /* Cor do texto padrão */
+}
+
+.btn-social.facebook:hover {
+    border-color: #365899;
+}
+
+.signup-link {
+    font-size: 0.95rem;
+    color: var(--text-dark-on-light); /* Texto escuro */
+}
+
+/* Responsividade básica */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .login-title {
+        font-size: 2.2rem;
+    }
+
+    .login-form input {
+        padding: 10px;
+    }
+
+    .btn-login, .btn-social {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
