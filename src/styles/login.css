@@ -207,15 +207,15 @@ body {
     border-color: var(--primary-color);
 }
 
-.remember-me input[type="checkbox"]:checked::after {
-    content: '✔';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--text-light-on-dark); /* Checkmark branco */
-    font-size: 12px;
-}
+    .remember-me input[type="checkbox"]:checked::after {
+        content: '✔';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-light-on-dark); /* Checkmark branco */
+        font-size: 12px;
+    }
 
 .centered-link-container {
     text-align: center;

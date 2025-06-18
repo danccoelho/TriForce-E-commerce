@@ -2,131 +2,157 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/cadastro.css'; // Importa o CSS para o estilo
+import '../styles/cadastro.css';
 
 const Cadastro = () => {
-    const [formData, setFormData] = useState({
-    lotmer: '',
-    comum: '',
-    stam: '',
-    mome: '',
-    registration: '',
-    conlstiom: '',
-    soror: '',
-  });
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    senha: '',
+    sobrenome: '',
+    confirmarEmail: '',
+    confirmarSenha: ''
+  }); 
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    const { name, value, type, checked } = e.target;
+    setFormData({ 
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
+    });
+  };  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Formulário enviado:', formData);
-    alert('Cadastro em andamento! Verifique o console para os dados.');
-    // Aqui você integraria com sua API de backend
+    console.log('Submitting form...', formData);
+
+   if (formData.senha !== formData.confirmarSenha) {
+      alert('As senhas não coincidem.');
+      return;
+    }
+
+    if (!formData.termos) {
+      alert('Você precisa aceitar os termos.');
+      return;
+    }
+
+    const { confirmarEmail, confirmarSenha, termos, ...dadosParaEnviar } = formData;
+
+    try {
+      const res = await axios.post('http://localhost:3001/api/cadastro', dadosParaEnviar);
+      alert(res.data.message);
+    } catch (err) {
+      console.error('Erro ao cadastrar:', err);
+      alert('Erro ao cadastrar. Veja o console para mais detalhes.');
+    }
   };
 
   return (
     <div className="registration-page">
       <div className="registration-card">
-        {/* Header (Bousting logo e menu hambúrguer) */}
         <header className="card-header">
           <div className="bousting-logo">
-            <span className="icon-placeholder">👤</span> Bousting
+            <div className="logo">3<span>Force</span></div>
           </div>
-          <div className="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          
         </header>
 
-        {/* Título da Seção */}
         <div className="section-title">
           <h2>Cadastro</h2>
           <div className="title-underline"></div>
         </div>
 
-        {/* Formulário */}
         <form className="registration-form" onSubmit={handleSubmit}>
           <div className="form-grid">
-            {/* Coluna Esquerda */}
             <div className="input-column">
-              <label className="input-label">Lotmer</label>
+             <label className="input-label">Nome<span className="required">*</span></label>
               <div className="input-group">
-                <span className="input-icon">💼</span>
                 <input
                   type="text"
-                  name="comum"
-                  placeholder="Comum"
-                  value={formData.comum}
+                  name="nome"
+                  placeholder="nome"
+                  value={formData.nome}
                   onChange={handleChange}
                 />
               </div>
 
-              <label className="input-label">Stam</label>
+              <label className="input-label">Email<span className='required'>*</span></label>
               <div className="input-group">
-                <span className="input-icon">👤</span>
                 <input
                   type="text"
-                  name="stam"
-                  placeholder="Stam"
-                  value={formData.stam}
+                  name="email"
+                  placeholder="email"
+                  value={formData.email}
                   onChange={handleChange}
                 />
-                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
               </div>
 
-              <label className="input-label">Mome</label>
+              <label className="input-label">Senha<span className='required'>*</span></label>
               <div className="input-group">
-                <span className="input-icon">✉️</span>
                 <input
-                  type="text"
-                  name="mome"
-                  placeholder="Mome"
-                  value={formData.mome}
+                  type="password"
+                  name="senha"
+                  placeholder="senha"
+                  value={formData.senha}
                   onChange={handleChange}
                 />
-                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
               </div>
             </div>
 
-            {/* Coluna Direita */}
             <div className="input-column">
-              <label className="input-label">Registration</label>
+              <label className="input-label">Sobrenome<span className='required'>*</span></label>
               <div className="input-group">
-                <span className="input-icon">👤</span>
                 <input
                   type="text"
-                  name="conlstiom"
-                  placeholder="Conlstiom"
-                  value={formData.conlstiom}
+                  name="sobrenome"
+                  placeholder="sobrenome"
+                  value={formData.sobrenome}
                   onChange={handleChange}
                 />
               </div>
 
-            
-              <label className="input-label">Soror</label>
+              <label className="input-label">Confirmar Email<span className='required'>*</span></label>
               <div className="input-group">
-                <span className="input-icon">💼</span>
                 <input
                   type="text"
-                  name="soror"
-                  placeholder="Soror"
-                  value={formData.soror}
+                  name="confirmarEmail"
+                  placeholder="confirmar email"
+                  value={formData.confirmarEmail}
                   onChange={handleChange}
                 />
-                <span className="dropdown-icon">▼</span> {/* Ícone de dropdown */}
               </div>
 
-              {/* Botão de Registro */}
-              <button type="submit" className="registration-button">
-                Registration
-              </button>
+              <label className="input-label">Confirmar Senha<span className='required'>*</span></label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="confirmarSenha"
+                  placeholder="confirmar senha"
+                  value={formData.confirmarSenha}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="button-row">
+                <button type="button" className="registration-button secondary">
+                  <Link to="/Login">cancelar</Link>
+                </button>
+                <button type="submit" className="registration-button">
+                  Registrar 
+                </button>
+              </div>
+
+              <label className="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    name="termos"
+                    checked={formData.termos}
+                    onChange={handleChange}
+                  />
+                  <span>Aceito os termos</span>
+              </label>
             </div>
           </div>
         </form>

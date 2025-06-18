@@ -1,19 +1,12 @@
-/* src/styles/cadastro.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-/* O conteúdo do :root, body e reset de box-sizing geralmente vai no index.css global,
-   mas para a finalidade de ter TUDO aqui, vamos deixar. No entanto, o ideal é
-   que as regras globais fiquem em um CSS global e as de componente, no CSS do componente. */
 
 :root {
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #f0f2f5;
-
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fefefe;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,15 +15,14 @@
 
 body {
   margin: 0;
-  display: flex; /* Essencial para centralização */
-  place-items: center; /* Centraliza o conteúdo (o App) no body */
+  display: flex;
+  place-items: center;
   min-width: 320px;
-  min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
-  overflow-x: hidden; /* Evita barra de rolagem horizontal */
-  overflow-y: auto; /* Permite rolagem vertical SE o conteúdo for maior que a tela */
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* Reset básico para todos os elementos */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -40,121 +32,117 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Garante que o root ocupe a altura total para centralização */
+  min-height: 100vh;
 }
 
-
-/* --- Card Container e Fundo --- */
 .registration-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Garante que ocupe a altura total da tela */
-  width: 100vw; /* Garante que ocupe a largura total da tela */
-  background: linear-gradient(135deg, #c84504c4, #d44406, #db0606); /* Gradiente suave de fundo */
-  padding: 15px; /* Reduzindo um pouco o padding geral */
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #c84504c4, #d44406, #db0606);
+  padding: 15px;
   box-sizing: border-box;
 }
 
 .registration-card {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
   border-radius: 20px;
-  padding: 30px; /* Reduzindo padding interno do card */
+  padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 760px; /* Levemente reduzindo a largura máxima do card */
+  max-width: 760px;
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Espaço entre as seções do card */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  gap: 25px;
 }
 
-/* --- Header --- */
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 15px; /* Reduzindo espaço abaixo do header */
+  padding-bottom: 15px;
   border-bottom: 1px solid #eee;
 }
 
 .bousting-logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem; /* Levemente reduzido */
+  font-size: 1.4rem;
   font-weight: 600;
   color: #333;
 }
 
-.bousting-logo .icon-placeholder {
-  font-size: 1.6rem; /* Levemente reduzido */
-  margin-right: 6px; /* Reduzido */
+.icon-placeholder {
+  font-size: 1.6rem;
+  margin-right: 6px;
   color: #888;
 }
 
 .menu-icon {
   display: flex;
   flex-direction: column;
-  gap: 3px; /* Reduzido */
+  gap: 3px;
   cursor: pointer;
-  padding: 4px; /* Reduzido */
+  padding: 4px;
 }
 
 .menu-icon span {
   display: block;
-  width: 22px; /* Reduzido */
-  height: 2.5px; /* Reduzido */
+  width: 22px;
+  height: 2.5px;
   background-color: #333;
   border-radius: 2px;
 }
 
-/* --- Título da Seção (Registration) --- */
 .section-title {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: -5px; /* Ajusta o espaço */
+  margin-top: -5px;
 }
 
 .section-title h2 {
-  font-size: 2.2rem; /* Levemente reduzido */
+  font-size: 2.2rem;
   font-weight: 700;
   color: #333;
   margin: 0;
-  padding: 0;
 }
 
 .title-underline {
-  width: 50px; /* Comprimento do sublinhado */
-  height: 3px; /* Espessura do sublinhado */
+  width: 50px;
+  height: 3px;
   background-color: #bbdefb;
   border-radius: 2px;
-  margin-top: 6px; /* Reduzido */
+  margin-top: 6px;
 }
 
-/* --- Formulário e Grid de Inputs --- */
 .registration-form {
   width: 100%;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Duas colunas de largura igual */
-  gap: 20px; /* Reduzindo o espaço entre as colunas e linhas */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.required {
+  color: red;
+  font-size: 1.2rem;
+  margin-left: 2px;
+  font-weight: bold;
 }
 
 .input-column {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Reduzindo o espaço entre os grupos de input */
+  gap: 15px;
 }
 
 .input-label {
-  font-size: 0.85rem; /* Levemente reduzido */
+  font-size: 0.85rem;
   color: #666;
-  margin-bottom: 3px; /* Reduzido */
-  display: block;
+  margin-bottom: 3px;
 }
 
 .input-group {
@@ -166,14 +154,13 @@ body {
 
 .input-group input {
   width: 100%;
-  padding: 10px 15px 10px 40px; /* Reduzindo padding */
+  padding: 10px 15px;
   border: 1px solid #ddd;
-  border-radius: 8px; /* Levemente reduzido */
-  font-size: 0.95rem; /* Levemente reduzido */
-  color: #333;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #000;
   background-color: #f9f9f9;
   transition: all 0.3s ease;
-  box-sizing: border-box;
 }
 
 .input-group input::placeholder {
@@ -187,121 +174,76 @@ body {
   background-color: #fff;
 }
 
-.input-icon {
-  position: absolute;
-  left: 12px; /* Ajustado */
-  color: #888;
-  font-size: 1rem; /* Levemente reduzido */
+/* Botões alinhados lado a lado */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 35px;
 }
 
-.dropdown-icon {
-  position: absolute;
-  right: 12px; /* Ajustado */
-  color: #888;
-  font-size: 0.7rem; /* Levemente reduzido */
-  pointer-events: none;
-}
-
-/* --- Botão de Registro --- */
 .registration-button {
-  width: 100%;
-  padding: 14px 20px; /* Reduzindo padding */
+  flex: 1;
+  padding: 14px 20px;
   border: none;
-  border-radius: 8px; /* Levemente reduzido */
-  background: linear-gradient(90deg, #bbdefb, #e1bee7);
-  color: white;
-  font-size: 1rem; /* Levemente reduzido */
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra um pouco menor */
-  margin-top: 35px; /* Reduzindo margem superior para alinhar melhor */
+  background: linear-gradient(90deg, #e3590a, #e1bee7);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .registration-button:hover {
   opacity: 0.9;
-  transform: translateY(-1px); /* Menor efeito de levantar */
+  transform: translateY(-1px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-.registration-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.registration-button.secondary {
+  background: #eeeeee;
+  color: #333;
 }
 
-/* --- Responsividade --- */
-@media (max-width: 768px) {
-  .registration-card {
-    padding: 25px;
-    margin: 15px;
-    gap: 20px;
-  }
-
-  .section-title h2 {
-    font-size: 1.8rem;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr; /* Colunas empilham em telas menores */
-    gap: 20px;
-  }
-
-  .input-column {
-      gap: 15px;
-  }
-
-  .registration-button {
-      margin-top: 20px; /* Ajuste para o botão em coluna única */
-      padding: 12px 18px;
-      font-size: 0.95rem;
-  }
+.registration-button.secondary:hover {
+  background-color: #ddd;
 }
 
-@media (max-width: 480px) {
-  .registration-card {
-    padding: 18px;
-    border-radius: 15px;
-    gap: 18px;
-  }
-  .card-header {
-      padding-bottom: 12px;
-  }
-  .bousting-logo {
-      font-size: 1.2rem;
-  }
-  .bousting-logo .icon-placeholder {
-      font-size: 1.4rem;
-  }
-  .menu-icon span {
-      width: 20px;
-      height: 2px;
-  }
-  .section-title h2 {
-    font-size: 1.6rem;
-  }
-  .title-underline {
-      width: 40px;
-      height: 2px;
-      margin-top: 5px;
-  }
-  .form-grid {
-    gap: 15px;
-  }
-  .input-group input {
-      padding: 8px 12px 8px 35px;
-      font-size: 0.85rem;
-  }
-  .input-icon {
-      left: 10px;
-      font-size: 0.9rem;
-  }
-  .dropdown-icon {
-      right: 10px;
-      font-size: 0.6rem;
-  }
-  .registration-button {
-      padding: 10px 15px;
-      font-size: 0.9rem;
-      margin-top: 18px;
-  }
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  color:  #0c0d0d;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid  #ddd; /* Borda do checkbox */
+    border-radius: 4px;
+    background-color: #fefefe;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked {
+    background-color:#de750c; /* Laranja quando checado */
+    border-color: #de750c;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fefefe;
+    font-size: 12px;
 }
